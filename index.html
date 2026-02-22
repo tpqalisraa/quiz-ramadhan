@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="assets/favicon.ico" />
+    <title>Quiz Ramadhan TPQ Al-Israa</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- AUDIO -->
+    <audio id="introSound" src="assets/intro.mp3"></audio>
+    <audio id="startSound" src="assets/start.mp3"></audio>
+    <audio id="correctSound" src="assets/correct.mp3"></audio>
+    <audio id="wrongSound" src="assets/wrong.mp3"></audio>
+    <audio id="bgMusic" src="assets/bg.mp3" loop></audio>
+
+    <!-- START SCREEN -->
+    <div class="start-screen">
+      <h1>🎯 Quiz Ramadhan TPQ Al-Israa</h1>
+
+      <select id="levelSelect">
+        <option value="">-- Pilih Kelas --</option>
+        <option value="TK">TK</option>
+        <option value="SD1">SD-1</option>
+        <option value="SD2">SD-2</option>
+        <option value="SD3">SD-3</option>
+        <option value="SD4">SD-4</option>
+        <option value="SD5">SD-5</option>
+        <option value="SD6">SD-6</option>
+        <option value="SMP">SMP</option>
+      </select>
+
+      <button
+        onclick="
+          startGame();
+          openFullscreen();
+        "
+      >
+        Mulai
+      </button>
+    </div>
+
+    <!-- GAME CONTAINER -->
+    <div class="container" style="display: none">
+      <div class="game-wrapper">
+        <!-- AREA KIRI -->
+        <div class="left">
+          <!-- LIFELINES PALING ATAS -->
+          <div class="lifelines">
+            <button class="lifeline" id="fifty">50:50</button>
+            <button class="lifeline" id="friend">📞 Teman</button>
+            <button class="lifeline" id="audience">👥 Penonton</button>
+          </div>
+
+          <!-- LOGO SELALU TAMPIL -->
+          <div class="logo-area">
+            <img
+              src="assets/wwtbm-logo.png"
+              class="rotating-logo"
+              width="350"
+            />
+          </div>
+          <!-- SOAL -->
+          <div id="question"></div>
+
+          <!-- OPTIONS -->
+          <div id="options"></div>
+          <div class="credit">Created by: Sopandi, &copy; 2026</div>
+        </div>
+
+        <!-- AREA KANAN (LADDER) -->
+        <div class="right">
+          <ul id="ladder"></ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+    <div id="modalOverlay" class="modal-overlay" style="display: none">
+      <div class="modal-box">
+        <div id="modalContent"></div>
+        <button onclick="closeModal()">Tutup</button>
+      </div>
+    </div>
+    
+    <div id="winPopup" class="win-popup" style="display: none">
+      <div class="win-box">
+        <h1>🎉 SELAMAT! 🎉</h1>
+        <h2>ANDA MENANG</h2>
+        <div class="win-amount">Rp 1.000.000.000</div>
+        <button onclick="restartGame()">Main Lagi</button>
+      </div>
+    </div>
+  </body>
+</html>
